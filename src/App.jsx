@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="HomePage" />} />
+            <Route index element={<Navigate replace to="home" />} />
             <Route path="homepage" element={<HomePage />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="CreatePostForm" element={<CreatePostForm />} />
