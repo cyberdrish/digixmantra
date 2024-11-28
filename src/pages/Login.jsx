@@ -12,12 +12,32 @@ const LoginLayout = styled.main`
 
 const Img = styled.img`
   height: 100vh;
-  width: 100%;
+  width: 90%;
   object-fit: cover;
   background-color: var(--color-grey-900);
+  animation: MoveUpDown 10s linear infinite;
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 100px;
+    }
+  }
 `;
 const Main = styled.div`
   grid-area: main;
+  animation: MoveUpDown 10s linear infinite;
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 100px;
+    }
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -29,7 +49,7 @@ function Login() {
   return (
     <LoginLayout>
       <Main>
-        <Img src="/Login-Gif.png" alt="LogIn page" />
+        <Img src="/Login-Gif.png" alt="LogIn page"></Img>
       </Main>
       <StyledDiv>
         <h1>Sign in</h1>
