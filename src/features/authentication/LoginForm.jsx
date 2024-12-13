@@ -55,8 +55,8 @@ const StyledDiv = styled.div`
 `;
 
 function LoginForm() {
-  const [email, setEmail] = useState("drish@example.com");
-  const [password, setPassword] = useState("1234567890");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
