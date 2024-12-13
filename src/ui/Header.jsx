@@ -18,14 +18,14 @@ const StyleDiv = styled.div`
   padding: 1rem 1rem;
 `;
 
-function Header({ type }) {
+function Header({ type, onClick }) {
   console.log({ type });
   const navigate = useNavigate();
   const { isLoading, isAuthenticated } = useUser();
 
   return (
     <StyledHeader>
-      {type === "Homepage_Landing" ? (
+      {type === "Homepage_Landing" && !isAuthenticated ? (
         <>
           <img
             style={{ height: "5rem", margin: "9px 0px 0px 9px" }}
@@ -35,7 +35,7 @@ function Header({ type }) {
           <StyleDiv>
             <Button
               size="small"
-              variation="primary"
+              $variation="primary"
               onClick={() => navigate("/login")}
             >
               LogIn
@@ -46,11 +46,7 @@ function Header({ type }) {
         <>
           <StyleDiv className="background-color: black;">Welcome User</StyleDiv>
           <StyleDiv>
-            <Button
-              size="small"
-              variation="primary"
-              onClick={() => navigate("/")}
-            >
+            <Button size="small" $variation="primary" onClick={onClick}>
               Logout
             </Button>
           </StyleDiv>

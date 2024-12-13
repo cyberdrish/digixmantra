@@ -177,7 +177,7 @@ function CreatePostForm() {
 
           <Footer>
             <StyledButton>Save as draft</StyledButton>
-            <StyledButton primary>Post now</StyledButton>
+            <StyledButton primary="true">Post now</StyledButton>
           </Footer>
         </Styleddiv1>
       </MainContent>
@@ -187,22 +187,22 @@ function CreatePostForm() {
           <Styleddiv2>
             <UserContainer>
               <ImgUser src="/Sample-Account-pic.png" alt="Profile Pic" />
-              <lable
+              <label
                 style={{
                   display: "flex",
-                  "flex-direction": "column",
+                  flexDirection: "column",
                   padding: "10px",
-                  "font-size": "small",
+                  fontSize: "small",
                 }}
               >
                 Your account
-                <lable style={{ color: "grey" }}> Today</lable>
-              </lable>
+                <label style={{ color: "grey" }}> Today</label>
+              </label>
             </UserContainer>
             <p
               style={{
                 margin: "0px 2rem 0px 2rem",
-                "font-size": "small",
+                fontSize: "small",
               }}
             >
               Write your caption, then customize it for each social network
@@ -213,45 +213,45 @@ function CreatePostForm() {
             <div
               style={{
                 display: "flex",
-                "justify-content": "space-evenly",
+                justifyContent: "space-evenly",
               }}
             >
               <button
                 style={{
-                  "font-size": "150%",
+                  fontSize: "150%",
                   border: "none",
-                  "background-color": "white",
+                  backgroundColor: "white",
                 }}
               >
                 <HiOutlineHandThumbUp />
               </button>
               <button
                 style={{
-                  "font-size": "150%",
+                  fontSize: "150%",
                   border: "none",
-                  "background-color": "white",
+                  backgroundColor: "white",
                 }}
               >
                 <HiLink />
               </button>
               <button
                 style={{
-                  "font-size": "150%",
+                  fontSize: "150%",
                   border: "none",
-                  "background-color": "white",
+                  backgroundColor: "white",
                 }}
               >
                 <HiOutlineShare />
               </button>
-              <botton
+              <button
                 style={{
-                  "font-size": "150%",
+                  fontSize: "150%",
                   border: "none",
-                  "background-color": "white",
+                  backgroundColor: "white",
                 }}
               >
                 <HiOutlineChatBubbleBottomCenterText />
-              </botton>
+              </button>
             </div>
           </Styleddiv2>
         </DisplayContent>
