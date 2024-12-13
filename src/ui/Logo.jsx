@@ -1,7 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const StyledLogo = styled.div`
+  text-align: center;
+`;
 
 const Img = styled.img`
   height: 15rem;
+  ${(props) =>
+    props.type === "large" &&
+    css`
+      height: 25rem;
+    `}
   width: auto;
   @media (max-width: 768px) {
     height: 10rem;
@@ -11,9 +20,9 @@ const Img = styled.img`
 
 function Logo({ type }) {
   return (
-    <div>
-      <Img src="/DigiXMantra-Light.png" alt="Logo" />
-    </div>
+    <StyledLogo>
+      <Img src="/DigiXMantra-Light.png" alt="Logo" type={type} />
+    </StyledLogo>
   );
 }
 

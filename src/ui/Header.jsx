@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../features/authentication/useUser";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -20,6 +21,7 @@ const StyleDiv = styled.div`
 function Header({ type }) {
   console.log({ type });
   const navigate = useNavigate();
+  const { isLoading, isAuthenticated } = useUser();
 
   return (
     <StyledHeader>
@@ -47,7 +49,7 @@ function Header({ type }) {
             <Button
               size="small"
               variation="primary"
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
             >
               Logout
             </Button>
