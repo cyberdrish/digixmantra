@@ -12,6 +12,8 @@ import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,9 +30,15 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
+          <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<Home />} />
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="home" />} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route path="homepage" element={<HomePage />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="CreatePostForm" element={<CreatePostForm />} />
@@ -62,6 +70,7 @@ function App() {
           },
         }}
       />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

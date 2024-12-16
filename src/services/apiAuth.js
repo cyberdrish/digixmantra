@@ -11,12 +11,9 @@ export async function login({ email, password }) {
 }
 
 export async function logout() {
-  const { error } = supabase.auth.signOut();
-  console.log(error);
-  supabase.auth.signOut();
-  console.log(error);
+  const { error } = await supabase.auth.signOut();
 
-  return { error };
+  if (error) throw new Error(error.message);
 }
 
 export async function getCurrentUser() {
@@ -27,7 +24,5 @@ export async function getCurrentUser() {
 
   const { data, error } = await supabase.auth.getUser();
 
-  console.log(data);
-  console.log("Fetching user data...");
   return data?.user;
 }

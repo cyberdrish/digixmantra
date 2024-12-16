@@ -2,7 +2,6 @@ import { focusManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
 
 export function useUser() {
-  console.log("useUser");
   const queryClient = useQueryClient();
   focusManager.setEventListener((handleFocus) => {
     // Listen to visibilitychange
@@ -24,7 +23,9 @@ export function useUser() {
     queryFn: getCurrentUser,
     staleTime: 0, // Always considered stale
     refetchOnWindowFocus: true,
-    onSuccess: () => console.log("User fetched on focus"),
+    onSuccess: () => {
+      console.log("User fetched on focus");
+    },
   });
 
   return { isLoading, user, isAuthenticated: user?.role === "authenticated" };

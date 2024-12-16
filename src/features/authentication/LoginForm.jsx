@@ -10,6 +10,7 @@ import Input from "../../ui/Input";
 import Heading from "../../ui/Heading";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogin } from "./useLogin";
+import SignupForm from "./SignupForm";
 
 const LoginLayout = styled.main`
   display: grid;
@@ -58,53 +59,74 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
+  const [openSignup, setOpenSignUp] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Towards Landing");
 
     if (!email || !password) return;
     login({ email, password });
   }
 
   return (
-    <LoginLayout>
-      <Main>
-        <Img src="/Login-Gif.png" alt="LogIn page"></Img>
-      </Main>
-      <Form onSubmit={handleSubmit}>
-        <StyledDiv>
-          <Logo type={"large"} />
-          <Heading as={"h1"}>Sign in</Heading>
-          <FormRowVertical label="Email address">
-            <Input
-              type="email"
-              id="email"
-              // This makes this form better for password managers
-              autoComplete="username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isLoading}
-            />
-          </FormRowVertical>
-          <FormRowVertical label="Password">
-            <Input
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isLoading}
-            />
-          </FormRowVertical>
-          <FormRowVertical>
-            <Button size="large" disabled={isLoading}>
-              {!isLoading ? "Log in" : <SpinnerMini />}
-            </Button>
-          </FormRowVertical>
-        </StyledDiv>
-      </Form>
-    </LoginLayout>
+    <>
+      <LoginLayout>
+        <Main>
+          <Img src="/Login-Gif.png" alt="LogIn page"></Img>
+        </Main>
+        {!openSignup ? (
+          <Form onSubmit={handleSubmit}>
+            <StyledDiv>
+              <Logo type={"large"} />
+              <Heading as={"h1"}>Sign in</Heading>
+              <FormRowVertical label="Email address">
+                <Input
+                  type="email"
+                  id="email"
+                  // This makes this form better for password managers
+                  autoComplete="username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
+                />
+              </FormRowVertical>
+              <FormRowVertical label="Password">
+                <Input
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={isLoading}
+                />
+              </FormRowVertical>
+              <FormRowVertical>
+                <Button size="large" disabled={isLoading}>
+                  {!isLoading ? "Log in" : <SpinnerMini />}
+                </Button>
+              </FormRowVertical>
+              <FormRowVertical>
+                <Heading
+                  as="h3"
+                  $styles={css`
+                    text-align: center;
+                  `}
+                >
+                  OR
+                </Heading>
+              </FormRowVertical>
+              <FormRowVertical>
+                <Button size="large" onClick={() => setOpenSignUp(!openSignup)}>
+                  {"Sign Up"}
+                </Button>
+              </FormRowVertical>
+            </StyledDiv>
+          </Form>
+        ) : (
+          <SignupForm />
+        )}
+      </LoginLayout>
+    </>
   );
 }
 

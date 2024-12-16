@@ -3,6 +3,8 @@ import Button from "./Button";
 import Logo from "./Logo";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../features/authentication/useUser";
+import useLogout from "../features/authentication/useLogout";
+import SpinnerMini from "./SpinnerMini";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -19,9 +21,9 @@ const StyleDiv = styled.div`
 `;
 
 function Header({ type, onClick }) {
-  console.log({ type });
   const navigate = useNavigate();
   const { isLoading, isAuthenticated } = useUser();
+  const { logout, isLoading: isLoggingOut } = useLogout();
 
   return (
     <StyledHeader>
@@ -46,8 +48,8 @@ function Header({ type, onClick }) {
         <>
           <StyleDiv className="background-color: black;">Welcome User</StyleDiv>
           <StyleDiv>
-            <Button size="small" $variation="primary" onClick={onClick}>
-              Logout
+            <Button size="small" $variation="primary" onClick={logout}>
+              {!isLoggingOut ? "Logout" : <SpinnerMini />}
             </Button>
           </StyleDiv>
         </>

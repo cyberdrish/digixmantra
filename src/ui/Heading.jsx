@@ -22,6 +22,7 @@ const Heading = styled.h1`
     css`
       font-size: 2rem;
       font-weight: 500;
+      ${css(props.$styles || "")}// Dynamically apply styles
     `}
     ${(props) =>
     props.as === "h4" &&

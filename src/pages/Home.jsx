@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Header from "../ui/Header";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../services/apiAuth";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -114,14 +113,7 @@ function Home() {
           </CenteredContent>
         </StyleDiv1>
       </Main>
-      <Header
-        type="Homepage_Landing"
-        onClick={() => {
-          logout();
-        }}
-      >
-        HomeLanding
-      </Header>
+      <Header type="Homepage_Landing">HomeLanding</Header>
     </StyledAppLayout>
   );
 }
