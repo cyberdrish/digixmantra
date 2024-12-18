@@ -6,22 +6,42 @@ const StyledLogo = styled.div`
 
 const Img = styled.img`
   height: 15rem;
+  width: auto;
+
   ${(props) =>
     props.type === "large" &&
     css`
       height: 25rem;
     `}
-  width: auto;
-  @media (max-width: 768px) {
-    height: 10rem;
-    width: auto;
-  }
+
+  ${(props) =>
+    props.$renderedAt === "sideBar" &&
+    css`
+      @media (max-width: 768px) {
+        height: 10rem;
+        width: auto;
+      }
+    `}
+
+  ${(props) =>
+    props.$renderedAt === "Login" &&
+    css`
+      @media (max-width: 768px) {
+        height: 20rem;
+        width: auto;
+      }
+    `}
 `;
 
-function Logo({ type }) {
+function Logo({ type, renderedAt }) {
   return (
     <StyledLogo>
-      <Img src="/DigiXMantra-Light.png" alt="Logo" type={type} />
+      <Img
+        src="/DigiXMantra-Light.png"
+        alt="Logo"
+        type={type}
+        $renderedAt={renderedAt}
+      />
     </StyledLogo>
   );
 }

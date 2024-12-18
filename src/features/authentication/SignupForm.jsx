@@ -3,18 +3,32 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import Logo from "../../ui/Logo";
+import { useSignup } from "./useSignup";
+import { useNavigate } from "react-router-dom";
 
 // Email regex: /\S+@\S+\.\S+/
 
-function SignupForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
-  const { error } = formState;
+function SignupForm({ openSignup, setOpenSignUp }) {
+  const { signUp, isLoading } = useSignup();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
+  const { errors } = formState;
+  const naviagte = useNavigate();
 
-  function onSubmit() {}
+  function onSubmit({ fullName, email, password }) {
+    console.log({ signUp, isLoading });
+    signUp(
+      { fullName, email, password },
+      {
+        onSettled: reset,
+      }
+    );
+  }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow label="Full name" error={error?.fullname?.message}>
+      <Logo type={"large"} />
+      <FormRow label="Full name" error={errors?.fullname?.message}>
         <Input
           type="text"
           id="fullName"
@@ -22,7 +36,7 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Email address" error={error?.email?.message}>
+      <FormRow label="Email address" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
@@ -32,7 +46,7 @@ function SignupForm() {
 
       <FormRow
         label="Password (min 8 characters)"
-        error={error?.password?.message}
+        error={errors?.password?.message}
       >
         <Input
           type="password"
@@ -41,7 +55,7 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Repeat password" error={error?.passwordConfirm?.message}>
+      <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
         <Input
           type="password"
           id="passwordConfirm"
@@ -55,10 +69,13 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button type="reset" onClick={() => setOpenSignUp(!openSignup)}>
+          Back to Login
+        </Button>
+        <Button $variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button>Sign Up</Button>
       </FormRow>
     </Form>
   );

@@ -33,7 +33,7 @@ const StyledSidebar = styled.aside`
 function Sidebar() {
   return (
     <StyledSidebar>
-      <Logo />
+      <Logo renderedAt={"sideBar"} />
       <MainNav />
     </StyledSidebar>
   );
