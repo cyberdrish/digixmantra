@@ -14,7 +14,7 @@ function SignupForm({ openSignup, setOpenSignUp }) {
   const { errors } = formState;
 
   function onSubmit({ fullName, email, password }) {
-    console.log({ signUp, isLoading });
+    console.log({ fullName, email, password });
     signUp(
       { fullName, email, password },
       {
@@ -30,7 +30,7 @@ function SignupForm({ openSignup, setOpenSignUp }) {
         <Input
           type="text"
           id="fullName"
-          {...register("fullname", { required: "This field is required" })}
+          {...register("fullName", { required: "This field is required" })}
         />
       </FormRow>
 

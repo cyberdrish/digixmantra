@@ -5,16 +5,24 @@ const StyledFormRow = styled.div`
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2.4rem;
-
   padding: 1rem 0;
+
   @media (max-width: 1024px) {
-    grid-template-columns: 24rem 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     > :nth-child(3) {
       grid-row: 2;
       grid-column: 2;
     }
   }
+  /* @media (max-width: 1024px) {
+    grid-template-columns: 24rem 1fr;
+    grid-template-rows: auto;
+    > :nth-child(3) {
+      grid-row: 2;
+      grid-column: 2;
+    }
+  } */
 
   &:first-child {
     padding-top: 0;

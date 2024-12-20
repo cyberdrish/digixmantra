@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const StyledLogo = styled.div`
   text-align: center;
@@ -34,14 +35,13 @@ const Img = styled.img`
 `;
 
 function Logo({ type, renderedAt }) {
+  const { isDarkMode } = useDarkMode();
+
+  const src = isDarkMode ? "/DigiXMantra-Dark.png" : "/DigiXMantra-Light.png";
+
   return (
     <StyledLogo>
-      <Img
-        src="/DigiXMantra-Light.png"
-        alt="Logo"
-        type={type}
-        $renderedAt={renderedAt}
-      />
+      <Img src={src} alt="Logo" type={type} $renderedAt={renderedAt} />
     </StyledLogo>
   );
 }
