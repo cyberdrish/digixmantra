@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   align-items: center;
   background-color: var(--color-grey-0);
   border-bottom: 1px solid var(--color-grey-300);
-  justify-content: right;
+  justify-content: space-between;
 `;
 const StyleDiv = styled.div`
   display: block;
