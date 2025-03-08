@@ -71,7 +71,7 @@ function SignupForm({ openSignup, setOpenSignUp }) {
           Back to Login
         </Button>
         <Button $variation="secondary" type="reset">
-          Cancel
+          Cancel/reset
         </Button>
         <Button>Sign Up</Button>
       </FormRow>
