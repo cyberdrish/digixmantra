@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../ui/Header";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../features/authentication/useUser";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -65,6 +66,8 @@ const CenteredContent = styled.div`
 
 function Home() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useUser();
+
   return (
     <StyledAppLayout>
       <Main>
@@ -81,7 +84,11 @@ function Home() {
               Save time and get REAL results on social media.<br></br>
             </span>
             <span style={{ color: "#FF9E62" }}>DigiXmantra makes it easy.</span>
-            <Button onClick={() => navigate("/login")}>
+            <Button
+              onClick={() =>
+                isAuthenticated ? navigate("/dashboard") : navigate("/login")
+              }
+            >
               Start your Journey Today!!
             </Button>
           </h1>

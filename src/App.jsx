@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import HomePage from "./pages/HomePage";
+// import HomePage from "./pages/HomePage";
 import CreatePostForm from "./pages/CreatePostForm";
 import NewUsers from "./pages/Users";
 import Settings from "./pages/Settings";
@@ -41,7 +41,7 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route path="homepage" element={<HomePage />} />
+              {/* <Route path="homepage" element={<HomePage />} /> */}
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="CreatePostForm" element={<CreatePostForm />} />
               <Route path="users" element={<NewUsers />} />
